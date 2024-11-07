@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li id="title">MovieTracker</li>
+      <li id="home"><a href="Homes.html">Home</a></li>
+     
+      <li id="addmovies"><a href="addmovie.html">AddMovies</a></li>
+      <li id="report"><a href="report.html">Report</a></li>
+      <li id="Fav"><a href="Favourite.html">Favourite</a></li>
+     
+      <li id="account"></li>
+    </ul>
+  </nav>
+  <div class="movieslistcontainer">
+    <h1 id="selectedCategory">Movies List</h1>
+    <table id="moviesTable" border="1">
+      <thead>
+        <tr>
+          <th>Movie Name</th>
+          <th>Movie Date</th>
+          <th>Duration (min)</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody id="moviesTableBody">
+        <!-- Rows will be populated by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+  <script>
+     document.getElementById("account").textContent="👤"+localStorage.getItem("user")
+    window.onload = function() {
+  const movies = JSON.parse(localStorage.getItem('movies')) || [];
+  
+  const tableBody = document.getElementById('moviesTableBody');
+
+  if (movies.length === 0) {
+    // If no movies are available, display a message
+    const row = document.createElement('tr');
+    const cell = document.createElement('td');
+    cell.colSpan = 4;
+    cell.innerText = "No movies added yet!";
+    row.appendChild(cell);
+    tableBody.appendChild(row);
+  } else {
+    // If there are movies, populate the table
+    movies.forEach((movie) => {
+      const row = document.createElement('tr');
+
+      const nameCell = document.createElement('td');
+      nameCell.innerText = movie.name;
+
+      const dateCell = document.createElement('td');
+      dateCell.innerText = movie.date;
+
+      const timeCell = document.createElement('td');
+      timeCell.innerText = movie.time;
+
+     const categorycell=document.createElement("td")
+     categorycell.innerText=movie.category;
+
+      row.appendChild(nameCell);
+      row.appendChild(dateCell);
+      row.appendChild(timeCell);
+     row.appendChild(categorycell);
+      
+      tableBody.appendChild(row);
+ 
+    });
+  }
+};
+
+  </script>
+  
+</body>
+</html>

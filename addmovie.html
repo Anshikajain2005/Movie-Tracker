@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="addmovie.css">
+ 
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li id="title">MovieTracker</li>
+      <li id="home"><a href="Homes.html">Home</a></li>
+      <li id="addmovies"><a href="addmovie.html">AddMovies</a></li>
+      <li id="report"><a href="report.html">Report</a></li>
+      <li id="Fav"><a href="Favourite.html">Favourite</a></li>
+     
+      <li id="account"></li>
+    </ul>
+  </nav>
+  <div class="addmoviecontainer">
+    <form id="form">
+      <h1>Movies Tracker</h1>
+      <label for="moviename">Enter MovieName</label><br>
+      <input type="text" id="moviename" required><br>
+      <label for="moviedate">Enter MovieDate</label><br>
+      <input type="date" id="moviedate" required><br>
+      <label for="movietime">Enter watching Duration(in minutes)</label><br>
+      <input type="number" id="movietime" required><br>
+      <label for="movierateing">Give MovieRating(out of 5)</label>
+      <input type="number" id="movierateing"><br>
+      <label for="selectCategory" id="select">Select Category</label><br>
+      <div class="categorycontainer">
+ 
+        <select id="option">
+          <option>Action</option>
+          <option> Animation</option>
+          <option>  Biopic</option>
+          <option> Comedy</option>
+          <option>Crime</option>
+          <option>Drama</option>
+          <option>Fantasy</option>
+          <option>Film Noir</option>
+          <option>Horror</option>
+          <option>Musical</option>
+          <option>Mystery</option>
+          <option>Romance</option>
+          <option>Sci-Fi</option>
+          <option>Thriller</option>
+          <option>Western</option>
+          <option>Spaghetti Western</option>
+          <option>Space Opera</option>
+          <option>Monster Movie</option>
+          <option>Road Movie</option>
+          <option>Disaster Film</option>
+        </select>
+        <h4 id="add"></h4>
+        <button id="Favouritebtn">Add To Favourite</button>
+       <button id="submit">Submit</button>
+      </div>
+       
+       
+    
+    </form>
+  </div>
+  <script>
+  document.getElementById("account").textContent="👤"+localStorage.getItem("user")
+  
+
+
+
+document.getElementById('submit').addEventListener('click', (e)=>{
+
+
+
+ 
+ event.preventDefault()
+  // Prevent form from submitting and reloading the page
+  
+  // Get values from the form fields
+  const movieName = document.getElementById('moviename').value;
+  const movieDate = document.getElementById('moviedate').value;
+  const movieTime = document.getElementById('movietime').value;
+  const moviecategory=document.getElementById("option").value
+
+  // Validate that the fields are not empty
+  if (!movieName || !movieDate || !movieTime ||!moviecategory) {
+   document.getElementById('form').innerText = "Please fill out all fields!";
+   return;
+   //alert("Please fill out all fields!")
+  }
+
+  // Create a movie object
+  const movie = {
+    name: movieName,
+    date: movieDate,
+    time: movieTime,
+    category: moviecategory,
+  };
+
+  // Save the movie to localStorage
+  let movies = JSON.parse(localStorage.getItem('movies')) || [];
+  movies.push(movie);
+  localStorage.setItem('movies', JSON.stringify(movies));
+
+  // Show the confirmation message
+  document.getElementById('add').innerText = "Movie added: " + movieName;
+
+  // Optionally, clear the form after submission
+  document.getElementById('form').reset();
+
+ 
+})
+document.getElementById("Favouritebtn").addEventListener("click",(e)=>{
+  e.preventDefault();
+   const Moviename=document.getElementById("moviename").value
+   const Movierating=document.getElementById("movierateing").value
+  
+   if (!Moviename || !Movierating) {
+   document.getElementById('form').innerText = "Please fill out all fields!";
+   return;
+   
+  }
+   const Movie={
+      name:Moviename,
+      rating:Movierating,
+   }
+   let film=JSON.parse(localStorage.getItem("film"))||[];
+   film.push(Movie);
+   localStorage.setItem('film',JSON.stringify(film));
+   document.getElementById('add').innerText= Moviename +" "+"add in your favourite movies";
+  
+})
+
+
+  </script>
+</body>
+</html>

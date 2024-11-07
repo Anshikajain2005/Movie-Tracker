@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="homes.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <ul>
+      <li id="title">MovieTracker</li>
+      <li id="home"><a href="Homes.html">Home</a></li>
+      
+      <li id="addmovies"><a href="addmovie.html">AddMovies</a></li>
+      <li id="report"><a href="report.html">Report</a></li>
+      <li id="Fav"><a href="Favourite.html">Favourite</a></li>
+      
+      <li id="account"></li>
+        
+    </ul>
+  </nav>
+  <div class="homecontainer">
+  <h1>Welcome To MoviesWorld</h1>
+  <h2>Track Your Movies with MovieTracker</h2>
+  <label for="user">Enter Your Name</label>
+  <input type="text" id="user">
+      
+  <button id="getbtn">Let's Start</button></div>
+</body>
+<script>
+  document.getElementById("getbtn").addEventListener("click",function(event){
+    const user=document.getElementById("user").value;
+    localStorage.getItem("user",user);
+    localStorage.setItem("user",user);
+    
+   // let name=JSON.parse(localStorage.getItem('name'))||[]
+   // name.push(user);
+    //localStorage.setItem('name',JSON.stringify(name));
+   document.getElementById("account").innerText="👤"+user;
+  })
+</script>
+</html>

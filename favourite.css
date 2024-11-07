@@ -1,0 +1,60 @@
+h2{
+    text-align: center;
+    color:aliceblue;
+    padding: 20px;
+    font-size:30px;
+}
+#favcontainer{
+    text-align: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        color: white;
+        padding: 30px 40px;
+        width: 80%;
+        margin-left: 100px;
+        margin-top: 100px;
+       
+}
+ 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 0px;
+  }
+  
+ 
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card Body Styling */
+  .card-body {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Movie title styling */
+  .card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Movie rating styling */
+  .card-text {
+    font-size: 1em;
+    color: #555;
+  }
+  
